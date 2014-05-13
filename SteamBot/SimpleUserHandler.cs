@@ -1,6 +1,14 @@
 using SteamKit2;
 using System.Collections.Generic;
 using SteamTrade;
+//gmc inc
+using System;
+using System.Configuration;
+using System.Globalization;
+using GamerscoinWrapper.Wrapper;
+using GamerscoinWrapper.Wrapper.Interfaces;
+using System.Threading;
+using System.Timers;
 
 namespace SteamBot
 {
@@ -32,9 +40,109 @@ namespace SteamBot
 
         public override void OnFriendRemove () {}
         
-        public override void OnMessage (string message, EChatEntryType type) 
+        public override void OnMessage (string message, EChatEntryType type)
         {
-            Bot.SteamFriends.SendChatMessage(OtherSID, type, Bot.ChatResponse);
+            message = message.ToLower();
+
+            //REGULAR chat commands
+            if (message.Contains("!help"))
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Available Bot Commands :");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!wallet");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!getwallet");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!withdraw");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!trade");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!getid");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!buy");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!sell");
+            }
+
+            else if (message.Contains("!wallet"))
+            {
+                //Enter GamersCoin Demon Settings into app.config
+                //Basic Setup Wallet Connector
+                IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Use Primary Wallet
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+                string myBalance = baseBtcConnector.GetReceivedByAccount("" + OtherSID);
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "My balance: " + myBalance + " GMC");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "<3");
+                string woot = baseBtcConnector.GetAccountAddress("bot");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Send Your GamersCoins to : " + woot + " to buy Items with GamersCoins");
+            }
+            //Get New Wallet Address
+            else if (message.Contains("!getwallet"))
+            {
+                IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Get New Wallet for User with SteamID
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+                string woot = baseBtcConnector.GetAccountAddress("" + OtherSID);
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your New GamersCoin Address : " + woot);
+            }
+            // Withdraw All GamersCoin from Wallet
+            else if (message.StartsWith("!withdraw"))
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Thanks for Freedom !!!");
+
+                //IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Withdraw GamersCoins from Wallet for User
+                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+
+                //decimal amount = 50;
+                //string woot = baseBtcConnector.SendFrom("" + OtherSID,"todo read address from chat and amount to send" , amount );
+                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your New GamersCoin Address : " + woot);
+            }
+
+            else if (message.Contains("!trade"))
+            {
+                Bot.SteamTrade.Trade(OtherSID);
+            }
+
+            else if (message.Contains("fuck") || message.Contains("suck") || message.Contains("dick") || message.Contains("cock") || message.Contains("tit") || message.Contains("boob") || message.Contains("pussy") || message.Contains("vagina") || message.Contains("cunt") || message.Contains("penis"))
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Sorry, but as a robot I cannot perform sexual functions.");
+            }
+
+            else if (message.Contains("!getid"))
+            {
+                string userinfo = Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ")";
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "You're welcome!  " + userinfo);
+                Bot.log.Success(Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ") added me!");
+            }
+
+            else if (message == "!buy")
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Please type that into the TRADE WINDOW, not here!");
+            }
+
+            else if (message == "!sell")
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Please type that into the TRADE WINDOW, not here!");
+            }
+
+
+            // ADMIN commands
+            else if (message == "self.restart")
+            {
+                if (IsAdmin)
+                {
+                    // Starts a new instance of the program itself
+                    var filename = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                    System.Diagnostics.Process.Start(filename);
+
+                    // Closes the current process
+
+                }
+            }
+            else if (message == ".canceltrade")
+            {
+                if (IsAdmin)
+                {
+                    Trade.CancelTrade();
+
+                }
+            }
+            else
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, Bot.ChatResponse);
+            }
         }
 
         public override bool OnTradeRequest() 
