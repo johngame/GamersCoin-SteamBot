@@ -1,0 +1,75 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 3.0 License
+
+Name       : Artifice
+Description: A two-column, fixed-width design with a dark color scheme.
+Version    : 1.0
+Released   : 20120813
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	color: #AFAFAF;
+	background: #040606 url(/images/img01.gif) repeat-x top left;
+	line-height: 2em;
+	font-size: 12pt;
+}
+
+body,input {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.avatar{
+	border:1px solid rgba(0,0,0,.2);
+}
+.avatar-small{
+	width:40px;
+	height:40px;
+}
+.tiny-avatar{
+	width:25px;
+	height:25px;
+	position:relative;
+	top:-3px;
+}
+.avatar-medium{
+	width:80px;
+	height:80px;
+}
+
+#footer {
+	padding: 0 0 90px 0;
+	text-align: center;
+	color: #555;
+}
+
+#footer a {
+	color: #707070;
+}
+
+#page {
+	margin: 0;
+	width: 1100px;
+	position: relative;
+	padding: 0px 40px 0px 40px;
+}
+
+#queue {
+background: #000000 url(/images/img02.gif) repeat-x top left;
+width: 440px;
+margin: 0 auto;
+}
+
+#wrapper {
+	background: #000000 url(/images/img02.gif) repeat-x top left;
+	margin: 75px auto 0 auto;
+	width: 1180px;
+	position: relative;
+	box-shadow: inset 0px 0px 30px 0px rgba(255,255,255,0.05), 0px 0px 30px 0px rgba(0,0,0,0.5);
+}
