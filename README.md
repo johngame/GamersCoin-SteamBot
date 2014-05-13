@@ -1,4 +1,4 @@
 GamersCoin-SteamBot
-===================
+====================
 
 GamersCoin-SteamBot
