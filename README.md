@@ -8,7 +8,8 @@ No More scam.<br>
 Send items to bot with the price,bot hold the item/s until some one buy it.<br>
 User x got GamersCoin User y got Items.<br>
 Perfect FairTrade System without 15 % Steam Market Fee.<br>
-Now user x can simple exchange GamersCoin to euro or $ or others on any GamersCoin Exchanges.<br>
+Now user x can simple exchange GamersCoins to euro or $ or others on any GamersCoin Exchanges.<br>
+Or User x buy new items with it.<br>
 
 ###Working
 Inculde GamersCoin Wrapper.<br>
