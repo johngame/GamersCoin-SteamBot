@@ -6,7 +6,7 @@ namespace GamerscoinWrapper.Wrapper.Interfaces
 {
     public interface IBaseBtcConnector
     {
-        Decimal GetBalance();
+        Decimal GetBalance(String account);
         Block GetBlock(String hash);
         String GetRawTransaction(String txId);
         Transaction DecodeRawTransaction(String rawTransaction);

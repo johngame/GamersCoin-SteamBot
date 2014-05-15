@@ -25,6 +25,10 @@ namespace SteamBot
 
         public override bool OnFriendAdd () 
         {
+            Bot.log.Success(Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ") added me!");
+            string userinfo = Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ")";
+            Bot.log.Success(Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ") added me!");
+            // Using a timer here because the message will fail to send if you do it too quickly
             return true;
         }
 
@@ -42,8 +46,6 @@ namespace SteamBot
         
         public override void OnMessage (string message, EChatEntryType type)
         {
-            message = message.ToLower();
-
             //REGULAR chat commands
             if (message.Contains("!help"))
             {
@@ -55,6 +57,13 @@ namespace SteamBot
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "!getid");
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "!buy");
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "!sell");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "!info");
+            }
+
+            else if (message.Contains("hi"))
+            {
+                string userinfo = Bot.SteamFriends.GetFriendPersonaName(OtherSID);
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "You're welcome!  " + userinfo);
             }
 
             else if (message.Contains("!wallet"))
@@ -62,32 +71,69 @@ namespace SteamBot
                 //Enter GamersCoin Demon Settings into app.config
                 //Basic Setup Wallet Connector
                 IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Use Primary Wallet
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
-                string myBalance = baseBtcConnector.GetReceivedByAccount("" + OtherSID);
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "My balance: " + myBalance + " GMC");
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "<3");
-                string woot = baseBtcConnector.GetAccountAddress("bot");
+                
+                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
+                string woot = baseBtcConnector.GetAccountAddress(OtherSID + "");
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "Send Your GamersCoins to : " + woot + " to buy Items with GamersCoins");
+
+                decimal myBalance = baseBtcConnector.GetBalance(OtherSID + "");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "My balance: " + myBalance + " GMC");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
             }
             //Get New Wallet Address
             else if (message.Contains("!getwallet"))
             {
                 IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Get New Wallet for User with SteamID
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
                 string woot = baseBtcConnector.GetAccountAddress("" + OtherSID);
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your New GamersCoin Address : " + woot);
             }
+
             // Withdraw All GamersCoin from Wallet
-            else if (message.StartsWith("!withdraw"))
+            else if (message.StartsWith("!withdraw G"))
             {
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Thanks for Freedom !!!");
+                // Create new instance with string array.
 
-                //IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Withdraw GamersCoins from Wallet for User
-                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");
+                string lineOfText = message.ToString();
+                string[] wordArray = lineOfText.Split(' ');
+                string account = OtherSID.ToString();
+                string address = wordArray[1].ToString();
+                decimal amount = Convert.ToDecimal(wordArray[2]);
 
-                //decimal amount = 50;
-                //string woot = baseBtcConnector.SendFrom("" + OtherSID,"todo read address from chat and amount to send" , amount );
-                //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your New GamersCoin Address : " + woot);
+                IBaseBtcConnector baseBtcConnector = new BaseBtcConnector(true); // Withdraw GamersCoins from Wallet for User
+                decimal myBalance = baseBtcConnector.GetBalance(OtherSID + "");
+
+
+                if (myBalance >= amount)
+                {
+                    baseBtcConnector.SendFrom(account, address, amount);
+                    Thread.Sleep(2000);
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
+                    //Bot.SteamFriends.SendChatMessage(OtherSID, type, "Connecting to Gamerscoin daemon: " + ConfigurationManager.AppSettings["ServerIp"] + "...");      
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "You withdraw " + amount + " GamersCoins to " + address + " address.");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Withdraw Done !!!");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Thanks for using our Fairtradebot !!!");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Have a nice Day ....");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Thanks for Freedom !!!");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your New Wallet balance: " + myBalance + " GMC");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
+                    Bot.log.Success(Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ") withdraw " + address + " " + amount);
+
+                }
+                else
+                {
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your withdraw amount is to high");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "Your Wallet balance: " + myBalance + " GMC");
+                    Bot.SteamFriends.SendChatMessage(OtherSID, type, "##################################################################################");
+                }
+            }
+
+            else if (message.Contains("!withdraw"))
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Please use : !withdraw gamerscoinaddress amount-to-paypout");
             }
 
             else if (message.Contains("!trade"))
@@ -103,8 +149,7 @@ namespace SteamBot
             else if (message.Contains("!getid"))
             {
                 string userinfo = Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ")";
-                Bot.SteamFriends.SendChatMessage(OtherSID, type, "You're welcome!  " + userinfo);
-                Bot.log.Success(Bot.SteamFriends.GetFriendPersonaName(OtherSID) + " (" + OtherSID.ToString() + ") added me!");
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "You're steamname and steamid is  " + userinfo);
             }
 
             else if (message == "!buy")
@@ -116,7 +161,10 @@ namespace SteamBot
             {
                 Bot.SteamFriends.SendChatMessage(OtherSID, type, "Please type that into the TRADE WINDOW, not here!");
             }
-
+            else if (message == "!info")
+            {
+                Bot.SteamFriends.SendChatMessage(OtherSID, type, "Bot verion 1.0");
+            }
 
             // ADMIN commands
             else if (message == "self.restart")

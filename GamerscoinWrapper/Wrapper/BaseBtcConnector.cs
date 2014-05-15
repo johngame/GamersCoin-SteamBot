@@ -28,10 +28,10 @@ namespace GamerscoinWrapper.Wrapper
                 _baseConnector = new Secondary();
             }
         }
-        
-        public Decimal GetBalance()
+
+        public Decimal GetBalance(String account)
         {
-            String result = _baseConnector.RequestServer(MethodName.getbalance)["result"].ToString();
+            String result = _baseConnector.RequestServer(MethodName.getbalance,account)["result"].ToString();
             Decimal balance;
             Decimal.TryParse(result, out balance);
             return balance;
