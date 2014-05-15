@@ -2,19 +2,19 @@
 Working with GamersCoin Gaming Cryptocurrency.
 
 ###Goal
-Better Buy/Sell System with Gamerscoin with bot escrow service.
+Better Buy/Sell System with Gamerscoin with bot escrow service.<br>
 
-No More scam.
-Send items to bot with the price,bot hold the item/s until some one buy it.
-User x got GamersCoin User y got Items.Perfect FairTrade System without 15 % Steam Fee.
-Now user x can simple exchange GamersCoin to € or $ or others on any GamersCoin Exchanges.
+No More scam.<br>
+Send items to bot with the price,bot hold the item/s until some one buy it.<br>
+User x got GamersCoin User y got Items.Perfect FairTrade System without 15 % Steam Fee.<br>
+Now user x can simple exchange GamersCoin to ï¿½ or $ or others on any GamersCoin Exchanges.<br>
 
 ###Working
-Inculde GamersCoin Wrapper.
-Send GamersCoin to Wallet.
-Withdraw GamersCoin from Wallet.
-Get new Wallet Address.
-Each user got a wallet with her steam_id.
+Inculde GamersCoin Wrapper.<br>
+Send GamersCoin to Wallet.<br>
+Withdraw GamersCoin from Wallet.<br>
+Get new Wallet Address.<br>
+Each user got a wallet with her steam_id.<br>
 
 ###Info
 
