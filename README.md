@@ -1,3 +1,23 @@
+###GamersCoin SteamTradingBot Poc
+Working with GamersCoin Gaming Cryptocurrency.
+
+###Goal
+Better Buy/Sell System with Gamerscoin with bot escrow service.
+
+No More scam.
+Send items to bot with the price,bot hold the item/s until some one buy it.
+User x got GamersCoin User y got Items.Perfect FairTrade System without 15 % Steam Fee.
+Now user x can simple exchange GamersCoin to € or $ or others on any GamersCoin Exchanges.
+
+###Working
+Inculde GamersCoin Wrapper.
+Send GamersCoin to Wallet.
+Withdraw GamersCoin from Wallet.
+Get new Wallet Address.
+Each user got a wallet with her steam_id.
+
+###Info
+
 **SteamBot** is a bot written in C# for the purpose of interacting with Steam Chat and Steam Trade.  As of right now, about 8 contributors have all added to the bot.  The bot is publicly available under the MIT License. Check out [LICENSE] for more details.
 
 There are several things you must do in order to get SteamBot working:
