@@ -7,7 +7,7 @@ Better Buy/Sell System with Gamerscoin with bot escrow service.<br>
 No More scam.<br>
 Send items to bot with the price,bot hold the item/s until some one buy it.<br>
 User x got GamersCoin User y got Items.Perfect FairTrade System without 15 % Steam Fee.<br>
-Now user x can simple exchange GamersCoin to � or $ or others on any GamersCoin Exchanges.<br>
+Now user x can simple exchange GamersCoin to euro or $ or others on any GamersCoin Exchanges.<br>
 
 ###Working
 Inculde GamersCoin Wrapper.<br>
