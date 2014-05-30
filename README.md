@@ -1,22 +1,51 @@
 ###GamersCoin SteamTradingBot Poc
 Working with GamersCoin Gaming Cryptocurrency.
 
-###Goal
-Better Buy/Sell System with Gamerscoin with bot escrow service.<br>
+**Just a Proof of Concept**
+#
+#
+How it Works ?
 
-No More scam.<br>
-Send items to bot with the price,bot hold the item/s until some one buy it.<br>
-User x got GamersCoin User y got Items.<br>
-Perfect FairTrade System without 15 % Steam Market Fee.<br>
-Now user x can simple exchange GamersCoins to euro or $ or others on any GamersCoin Exchanges.<br>
-Or User x buy new items with it.<br>
+Download and Start GamersCoin-QT Client
+
+Stop GamersCoin-QT
+
+Change your gamerscoin.conf to WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
+
+```
+daemon=1
+server=1
+listen=1
+rpcuser=username
+rpcpassword=masterpassword
+rpcallowip=127.0.0.1
+```
+
+Edit app.config
+```
+  <appSettings>
+    <add key="PrimaryUsername" value="username"/>
+    <add key="PrimaryPassword" value="masterpassword"/>
+    <add key="PrimaryServerIp" value="http://192.168.178.33:40001"/>
+  </appSettings>
+```
+
+###Goal
+Better Buy/Sell System with Gamerscoin with bot escrow service.
+
+-	No More scam.<br>
+-	Send items to bot with the price,bot hold the item/s until some one buy it.<br>
+-	User x got GamersCoin User y got Items.<br>
+-	Perfect FairTrade System without 15 % Steam Market Fee.<br>
+-	Now user x can simple exchange GamersCoins to euro or $ or others on any GamersCoin Exchanges.<br>
+-	Or User x buy new items with it.<br>
 
 ###Working
-Inculde GamersCoin Wrapper.<br>
-Send GamersCoin to Wallet.<br>
-Withdraw GamersCoin from Wallet.<br>
-Get new Wallet Address.<br>
-Each user got a wallet with her steam_id.<br>
+Inculde GamersCoin Wrapper.
+Send GamersCoin to Wallet.
+Withdraw GamersCoin from Wallet.
+Get new Wallet Address.
+Each user got a wallet with her steam_id.
 
 ###Info
 
