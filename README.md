@@ -1,12 +1,23 @@
 ###GamersCoin SteamTradingBot Poc
 
+This project was created to Support The Water Project: Give Water
+
+http://thewaterproject.org/
+![ScreenShot](http://thewaterproject.org/images/logo-tab.png)
+
+1 % Minimum Trade Fee to Suppport The Water Project while exchange items.
+
+Open Source Project Supported by http://gamers-coin.org/foundation
+
 Open Source Project Supported by http://game4commit.gamers-coin.org
 
 Get Gamerscoins for contributes.
+All contributors are welcome!
 
 [![tip for next commit](http://game4commit.gamers-coin.org/projects/6.svg)](http://game4commit.gamers-coin.org/projects/6)
 
-Steam Trading Bot Working with GamersCoin Gaming Cryptocurrency.
+
+#####Steam Trading Bot Working with GamersCoin Gaming Cryptocurrency.
 
 **Just a Proof of Concept**
 #
