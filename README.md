@@ -14,9 +14,11 @@ Steam Trading Bot Working with GamersCoin Gaming Cryptocurrency.
 How it Works ?
 
 Debian / Ubuntu
+
 Download and Start GamersCoin Daemon Client
 
 git clone https://github.com/johngame/Gamerscoin-Auto-Daemon-Install-Script
+
 chmod 0777 && ./gamerscoin-easy.sh
 
 Read your randonm Username and Password from gamerscoin.conf  WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
