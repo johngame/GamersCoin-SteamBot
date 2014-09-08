@@ -1,7 +1,9 @@
 ###GamersCoin SteamTradingBot Poc
 
 Open Source Project Supported by http://game4commit.gamers-coin.org
+
 Get Gamerscoins for contributes.
+
 [![tip for next commit](http://game4commit.gamers-coin.org/projects/6.svg)](http://game4commit.gamers-coin.org/projects/6)
 
 Steam Trading Bot Working with GamersCoin Gaming Cryptocurrency.
