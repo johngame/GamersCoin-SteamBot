@@ -6,22 +6,15 @@ Working with GamersCoin Gaming Cryptocurrency.
 #
 How it Works ?
 
-Download and Start GamersCoin-QT Client
+Debian / Ubuntu
+Download and Start GamersCoin Daemon Client
 
-Stop GamersCoin-QT
+git clone https://github.com/johngame/Gamerscoin-Auto-Daemon-Install-Script
+chmod 0777 && ./gamerscoin-easy.sh
 
-Change your gamerscoin.conf to WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
+Read your randonm Username and Password from gamerscoin.conf  WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
 
-```
-daemon=1
-server=1
-listen=1
-rpcuser=username
-rpcpassword=masterpassword
-rpcallowip=127.0.0.1
-```
-
-Edit app.config
+Edit app.config to your Random Secure Username and Password
 ```
   <appSettings>
     <add key="PrimaryUsername" value="username"/>
