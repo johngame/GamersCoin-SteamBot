@@ -21,7 +21,9 @@ git clone https://github.com/johngame/Gamerscoin-Auto-Daemon-Install-Script
 
 chmod 0777 && ./gamerscoin-easy.sh
 
-Read your randonm Username and Password from gamerscoin.conf  WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
+Read your random Secure Username and Password from gamerscoin.conf  
+
+WINDOWS (~/APPDATE/GAMERSCOIN) LINUX (~/.gamerscoin/)
 
 Edit app.config to your Random Secure Username and Password
 ```
