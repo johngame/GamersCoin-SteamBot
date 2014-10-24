@@ -11,8 +11,9 @@ Open Source Project Supported by http://gamers-coin.org/foundation
 
 Open Source Project Supported by http://game4commit.gamers-coin.org
 
-Get Gamerscoins for contributes.
-All contributors are welcome!
+![Gamerscoin](https://raw.githubusercontent.com/gamers-coin/gamers-coinv3/01d1ca6d63b565ea46dcee3b6552b030d57d1187/src/qt/res/icons/bitcoin.png)![Gamerscoin](http://i.imgur.com/Nfb8DQx.png)
+
+Project supported by Game4commit Get paid to contribute to a project :
 
 [![tip for next commit](http://game4commit.gamers-coin.org/projects/6.svg)](http://game4commit.gamers-coin.org/projects/6)
 
